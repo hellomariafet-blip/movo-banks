@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://movo.up.railway.app/sitemap.xml
