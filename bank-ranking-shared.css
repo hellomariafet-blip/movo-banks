@@ -202,6 +202,84 @@
   white-space: nowrap;
 }
 
+.score-label-with-tooltip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  width: fit-content;
+}
+
+.score-tooltip {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--border, #e0e0e0);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--text-secondary, #606060);
+  font: 800 10px/1 Inter, Arial, sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: help;
+}
+
+.score-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  z-index: 60;
+  width: min(280px, 72vw);
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #151515;
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(21, 21, 21, .18);
+  font: 500 12px/1.45 Inter, Arial, sans-serif;
+  letter-spacing: 0;
+  text-align: left;
+  text-transform: none;
+  white-space: normal;
+  transform: translateX(-50%) translateY(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .16s ease, transform .16s ease;
+}
+
+.score-tooltip::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 4px);
+  z-index: 61;
+  width: 10px;
+  height: 10px;
+  background: #151515;
+  transform: translateX(-50%) rotate(45deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .16s ease;
+}
+
+.score-tooltip:hover::after,
+.score-tooltip:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.score-tooltip:hover::before,
+.score-tooltip:focus-visible::before {
+  opacity: 1;
+}
+
+.score-tooltip:focus-visible {
+  outline: 3px solid rgba(27, 86, 245, .2);
+  outline-offset: 2px;
+}
+
 .stat-value {
   color: var(--text-primary, #151515);
   font-family: "Montserrat Alternates", sans-serif;
