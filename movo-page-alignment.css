@@ -1,0 +1,126 @@
+:root {
+  --movo-page-gutter: var(--page-px, 80px);
+  --movo-content-max: 1200px;
+  --movo-header-height: 72px;
+  --movo-hero-top: 58px;
+  --movo-hero-bottom: 40px;
+  --movo-back-gap: 30px;
+  --movo-h1-reserved-height: 1.04em;
+}
+
+.movo-site-header,
+.header.movo-site-header {
+  height: var(--movo-header-height);
+  min-height: var(--movo-header-height);
+}
+
+.movo-site-header__inner,
+.header-inner.movo-site-header__inner {
+  width: 100%;
+  max-width: 1440px;
+  height: var(--movo-header-height);
+  min-height: var(--movo-header-height);
+  padding-right: var(--movo-page-gutter);
+  padding-left: var(--movo-page-gutter);
+}
+
+.ratings-hero,
+main > .hero {
+  padding-top: var(--movo-hero-top);
+  padding-right: var(--movo-page-gutter);
+  padding-bottom: var(--movo-hero-bottom);
+  padding-left: var(--movo-page-gutter);
+}
+
+.ratings-hero-inner,
+.hero-inner,
+main > .hero .inner {
+  width: 100%;
+  max-width: var(--movo-content-max);
+  min-width: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.ratings-hero .back,
+main > .hero .back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 20px;
+  margin: 0 0 var(--movo-back-gap);
+  color: var(--blue, #1b56f5);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.ratings-hero .back svg,
+main > .hero .back svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ratings-hero h1,
+main > .hero h1 {
+  max-width: var(--movo-content-max);
+  min-height: var(--movo-h1-reserved-height);
+  margin: 0 auto;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: clamp(48px, 5.3vw, 72px);
+  font-weight: 900;
+  line-height: 1.04;
+  letter-spacing: -2px;
+  text-align: center;
+}
+
+.ratings-subtitle,
+main > .hero p,
+main > .hero .hero-copy {
+  max-width: 720px;
+  margin: 18px auto 0;
+  color: var(--text-2, #606060);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 27px;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  :root {
+    --movo-page-gutter: 40px;
+  }
+}
+
+@media (max-width: 800px) {
+  :root {
+    --movo-page-gutter: 20px;
+    --movo-header-height: 60px;
+    --movo-hero-top: 32px;
+    --movo-hero-bottom: 34px;
+    --movo-back-gap: 26px;
+    --movo-h1-reserved-height: 2.12em;
+  }
+
+  .ratings-hero h1,
+  main > .hero h1 {
+    font-size: 40px;
+    line-height: 1.06;
+    letter-spacing: -1.2px;
+    overflow-wrap: anywhere;
+  }
+
+  .ratings-subtitle,
+  main > .hero p,
+  main > .hero .hero-copy {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}

@@ -1,0 +1,428 @@
+.movo-savings-widget {
+  --field-h: 68px;
+  --field-r: 16px;
+  width: 100%;
+  max-width: var(--content-max, 1200px);
+  min-width: 0;
+  margin: 0 auto;
+  padding: 38px 28px;
+  border: 1px solid #e4e7ef;
+  border-radius: 22px;
+  background: #f0f2f6;
+}
+
+.transfer-widget > [data-movo-savings-calculator] {
+  display: contents;
+}
+
+.savings-form-grid {
+  display: grid;
+  grid-template-columns: 2.5fr 1.5fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.savings-form-grid .amount-combo {
+  display: grid;
+  grid-template-columns: minmax(90px, 1fr) 88px;
+  align-items: center;
+  gap: 12px;
+}
+
+.savings-form-grid .transfer-input,
+.savings-form-grid .transfer-select {
+  width: 100%;
+  min-width: 0;
+}
+
+.savings-form-grid .movo-field__control:focus,
+.savings-form-grid .movo-field__control:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.savings-form-grid .transfer-input::placeholder {
+  color: #ababab;
+}
+
+.savings-form-grid .select-wrap {
+  position: relative;
+}
+
+.savings-form-grid .transfer-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 25px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.savings-form-grid .select-wrap::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  border-right: 1.7px solid var(--text-primary, #151515);
+  border-bottom: 1.7px solid var(--text-primary, #151515);
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.savings-currency-label {
+  padding-left: 13px;
+  border-left: 1px solid var(--border, #e0e0e0);
+  color: var(--text-primary, #151515);
+  font-size: 15px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.savings-submit {
+  min-width: 140px;
+  height: var(--field-h);
+  margin: 0;
+  padding: 0 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: var(--field-r);
+  background: var(--blue, #1b56f5);
+  color: #fff;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 650;
+  white-space: nowrap;
+  transition: background 200ms ease, transform 100ms ease, box-shadow 200ms ease;
+}
+
+.savings-submit:hover {
+  background: var(--blue-hover, #1446d4);
+  box-shadow: 0 7px 18px rgba(27, 86, 245, 0.28);
+}
+
+.savings-submit:active {
+  transform: scale(0.97);
+}
+
+.savings-submit svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+}
+
+.savings-error {
+  margin-top: 10px;
+  color: #b42318;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.transfer-benefits {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px 41px;
+}
+
+.transfer-benefit {
+  display: flex;
+  align-items: center;
+  gap: 9.6px;
+  color: var(--text-secondary, #606060);
+  font-size: 15.6px;
+  line-height: 21.6px;
+}
+
+.benefit-check {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  display: grid;
+  place-items: center;
+  color: var(--blue, #1b56f5);
+}
+
+.benefit-check svg {
+  width: 21.6px;
+  height: 21.6px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.savings-table-tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.savings-filter-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.savings-chip {
+  min-height: 40px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font: 500 13.5px/18px Inter, Arial, sans-serif;
+  white-space: nowrap;
+  outline: none;
+  transition: background .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.savings-chip-active {
+  background: var(--blue, #1b56f5);
+  color: #fff;
+  border: 1.5px solid var(--blue, #1b56f5);
+}
+
+.savings-chip-default {
+  background: #fff;
+  color: var(--text-2, #606060);
+  border: 1.5px solid var(--border, #e0e0e0);
+}
+
+.savings-chip-default:hover {
+  border-color: var(--text-muted, #ababab);
+  color: var(--black, #151515);
+  background: var(--surface, #f5f5f5);
+}
+
+.savings-chip:focus-visible,
+.savings-sort-select:focus-visible {
+  box-shadow: 0 0 0 3px rgba(27, 86, 245, .14);
+}
+
+.savings-sort-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.savings-sort-dropdown::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  width: 8px;
+  height: 8px;
+  border-right: 1.8px solid var(--blue, #1b56f5);
+  border-bottom: 1.8px solid var(--blue, #1b56f5);
+  transform: translateY(-2px) rotate(45deg);
+  pointer-events: none;
+}
+
+.savings-sort-select {
+  min-width: 178px;
+  min-height: 40px;
+  padding: 9px 36px 9px 16px;
+  border: 1.5px solid rgba(27, 86, 245, .36);
+  border-radius: 999px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #fff;
+  color: var(--blue, #1b56f5);
+  font: 500 13.5px/18px Inter, Arial, sans-serif;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.savings-sort-select:hover {
+  border-color: var(--blue, #1b56f5);
+  background: var(--blue-lt, #eef2ff);
+  color: var(--blue-hover, #1446d4);
+}
+
+.rates .rate-card {
+  position: relative;
+  overflow: hidden;
+  grid-template-columns: minmax(220px, 1.25fr) minmax(115px, 0.5fr) minmax(120px, 0.55fr) minmax(210px, 1fr);
+  min-height: 139px;
+  padding-top: 26px;
+  padding-bottom: 26px;
+  box-shadow: var(--shadow-border, 0 0 0 1px #ececec);
+  transition:
+    transform 220ms cubic-bezier(.22, 1, .36, 1),
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.rates .rate-card::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 0;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--blue, #1b56f5);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.rates .rate-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(27, 86, 245, .15);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .1);
+}
+
+.rates .rate-card:hover::before {
+  opacity: 1;
+}
+
+.rates .rate-card:active {
+  transform: translateY(0);
+}
+
+.rates.has-earnings .rate-card {
+  grid-template-columns: minmax(220px, 1.15fr) minmax(150px, 0.65fr) minmax(115px, 0.5fr) minmax(120px, 0.55fr) minmax(210px, 1fr);
+}
+
+.rates .rate-card > div:not(.bank):not(.special) {
+  align-self: start;
+}
+
+.rates .label {
+  display: block;
+  min-height: 16px;
+  line-height: 16px;
+}
+
+.rates .value,
+.rates .detail-value,
+.rates .earn-value {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  color: var(--black, #151515);
+}
+
+.rates .detail-value {
+  margin-top: 6px;
+  line-height: 1;
+}
+
+.rates.has-earnings .earn-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.14em;
+  color: var(--blue, #1b56f5);
+}
+
+.rates.has-earnings .earn-field .label {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.dirham-mark {
+  position: relative;
+  display: inline-block;
+  width: 0.72em;
+  height: 0.86em;
+  flex: 0 0 auto;
+  color: currentColor;
+  vertical-align: -0.08em;
+  background:
+    linear-gradient(currentColor, currentColor) 47% 36% / 0.78em 0.08em no-repeat,
+    linear-gradient(currentColor, currentColor) 47% 56% / 0.78em 0.08em no-repeat;
+}
+
+.dirham-mark::before {
+  content: "D";
+  position: absolute;
+  inset: 0;
+  font: inherit;
+  line-height: 0.9;
+}
+
+@media (max-width: 1100px) {
+  .rates .rate-card,
+  .rates.has-earnings .rate-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .movo-savings-widget {
+    padding: 18px 14px;
+    border-radius: 17px;
+  }
+
+  .savings-form-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .savings-submit {
+    width: 100%;
+    min-height: 58px;
+    height: 58px;
+    border-radius: 12px;
+  }
+
+  .transfer-benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 12px;
+    justify-content: stretch;
+    margin-top: 18px;
+  }
+
+  .transfer-benefit {
+    align-items: flex-start;
+    font-size: 13.2px;
+    line-height: 19.2px;
+  }
+
+  .savings-table-tools {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .savings-filter-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .savings-filter-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .savings-sort-dropdown,
+  .savings-sort-select {
+    width: 100%;
+  }
+
+  .rates .rate-card,
+  .rates.has-earnings .rate-card {
+    grid-template-columns: 1fr;
+  }
+
+  .rates .detail-value {
+    font-size: 26px;
+  }
+}

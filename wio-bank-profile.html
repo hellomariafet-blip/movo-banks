@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Wio Bank — Profile & Reviews</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F5F7;
+  --white:#fff;
+  --border:#E5E7EB;
+  --border-hover:#C9CDD6;
+  --text:#09090B;
+  --sub:#52525B;
+  --muted:#A1A1AA;
+  --blue:#2563EB;
+  --blue-dark:#1D4ED8;
+  --blue-lt:#EFF6FF;
+  --green:#16A34A;
+  --green-lt:#F0FDF4;
+  --green-b:#BBF7D0;
+  --red:#DC2626;
+  --red-lt:#FFF1F2;
+  --red-b:#FECDD3;
+  --r:14px;
+  --r-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.04);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:var(--shadow)}
+.nav-in{max-width:980px;margin:0 auto;padding:0 28px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-size:17px;font-weight:800;letter-spacing:-.3px;color:var(--text);text-decoration:none}
+.nav-links{display:flex;gap:4px}
+.nav-links a{font-size:14px;color:var(--sub);text-decoration:none;font-weight:500;padding:6px 12px;border-radius:var(--r-sm);transition:background .12s,color .12s}
+.nav-links a:hover{background:var(--bg);color:var(--text)}
+/* LAYOUT */
+.page{max-width:980px;margin:0 auto;padding:0 28px 100px}
+
+/* BREADCRUMB */
+.bc{padding:20px 0 14px;display:flex;align-items:center;gap:5px;font-size:13.5px;color:var(--muted)}
+.bc a{color:var(--sub);text-decoration:none;display:inline-flex;align-items:center;gap:4px;font-weight:500;transition:color .12s}
+.bc a:hover{color:var(--text)}
+.bc svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;flex-shrink:0}
+
+/* CARD */
+.card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow)}
+
+/* HERO */
+.hero-card{padding:32px 36px 30px}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start}
+.hero-meta{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.3px;text-transform:uppercase;margin-bottom:7px}
+.hero-name{font-size:34px;font-weight:900;letter-spacing:-1px;line-height:1.08}
+.hero-desc{font-size:14px;color:var(--sub);line-height:1.75;margin-top:13px;max-width:480px}
+.hero-actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.btn-solid{display:inline-flex;align-items:center;gap:7px;background:var(--blue);color:#fff;border:none;border-radius:999px;padding:10px 22px;font-size:13.5px;font-weight:700;cursor:pointer;text-decoration:none;transition:background .12s,box-shadow .12s;white-space:nowrap}
+.btn-solid:hover{background:var(--blue-dark);box-shadow:0 0 0 3px rgba(37,99,235,.2)}
+.btn-ghost{display:inline-flex;align-items:center;gap:7px;background:var(--white);color:var(--text);border:1.5px solid var(--border);border-radius:999px;padding:10px 22px;font-size:13.5px;font-weight:600;cursor:pointer;text-decoration:none;transition:border-color .12s,background .12s;white-space:nowrap}
+.btn-ghost:hover{border-color:var(--border-hover);background:var(--bg)}
+.btn-solid svg,.btn-ghost svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5}
+
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:24px;padding-top:2px}
+.wio-wordmark{font-size:40px;font-weight:900;font-style:italic;color:#6C21F5;letter-spacing:-1.5px;line-height:1;user-select:none}
+.rank-badge{text-align:right}
+.rank-num{font-size:52px;font-weight:900;letter-spacing:-3px;line-height:.95;color:var(--text)}
+.rank-label{font-size:13px;color:var(--sub);margin-top:5px;font-weight:500}
+.rank-link{font-size:13px;color:var(--blue);font-weight:600;text-decoration:none;display:block;margin-top:3px}
+.rank-link:hover{text-decoration:underline}
+
+/* DIVIDER */
+hr{border:none;border-top:1px solid var(--border)}
+
+/* REVIEWS */
+.reviews-card{margin-top:12px}
+.rev-head{padding:28px 36px 0}
+.rev-title{font-size:22px;font-weight:800;letter-spacing:-.5px}
+
+/* PLATFORM GRID */
+.plat-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:24px;border-top:1px solid var(--border);border-left:1px solid var(--border)}
+.plat-col{padding:22px 20px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);transition:background .1s}
+.plat-col:hover{background:#FAFAFA}
+.plat-top{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.plat-icon{width:22px;height:22px;flex-shrink:0}
+.plat-name{font-size:13.5px;font-weight:700}
+.plat-score{font-size:44px;font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:8px;font-feature-settings:'tnum'}
+.stars{display:flex;gap:2.5px;margin-bottom:6px}
+.s{font-size:13px}
+.s-on{color:var(--blue)}
+.s-off{color:#E4E7EB}
+.plat-count{font-size:12px;color:var(--muted);font-weight:500}
+
+/* SENTIMENT */
+.sentiment{padding:28px 36px 28px}
+.sent-block+.sent-block{margin-top:28px;padding-top:28px;border-top:1px solid var(--border)}
+.sent-head{display:flex;align-items:center;gap:9px;margin-bottom:13px}
+.sent-head-icon{font-size:17px;line-height:1}
+.sent-head-label{font-size:15px;font-weight:700}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px}
+.tag{padding:5px 14px;border-radius:999px;font-size:12.5px;font-weight:500;border:1px solid;cursor:default;transition:opacity .1s}
+.tag:hover{opacity:.75}
+.tg{background:var(--green-lt);color:#14532D;border-color:var(--green-b)}
+.tr{background:var(--red-lt);color:#9F1239;border-color:var(--red-b)}
+.sent-text{font-size:13.5px;color:var(--sub);line-height:1.75}
+
+/* REVIEW CTA */
+.rev-cta{border-top:1px solid var(--border);padding:22px 36px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.rev-cta p{font-size:14px;color:var(--sub)}
+.rev-cta strong{color:var(--text);font-weight:700}
+
+/* FAQ */
+.faq{margin-top:40px}
+.faq-title{font-size:26px;font-weight:900;letter-spacing:-.6px;margin-bottom:16px}
+.faq-list{border:1px solid var(--border);border-radius:var(--r);background:var(--white);box-shadow:var(--shadow);overflow:hidden}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item:last-child{border-bottom:none}
+.faq-btn{width:100%;background:none;border:none;padding:19px 24px;display:flex;align-items:center;justify-content:space-between;font-size:14.5px;font-weight:500;color:var(--text);cursor:pointer;text-align:left;gap:16px;transition:background .1s;font-family:inherit}
+.faq-btn:hover{background:#FAFAFA}
+.faq-btn svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0;transition:transform .22s ease,stroke .12s}
+.faq-item.open .faq-btn svg{transform:rotate(180deg);stroke:var(--sub)}
+.faq-item.open .faq-btn{font-weight:600}
+.faq-ans{max-height:0;overflow:hidden;transition:max-height .28s ease,padding .28s ease}
+.faq-ans-inner{padding:0 24px 18px;font-size:14px;color:var(--sub);line-height:1.75}
+.faq-item.open .faq-ans{max-height:200px}
+.faq-more{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-size:13.5px;font-weight:600;text-decoration:none;margin-top:14px;transition:gap .12s}
+.faq-more:hover{gap:10px;text-decoration:underline}
+.faq-more svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.5}
+
+@media(max-width:700px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-right{flex-direction:row;align-items:center}
+  .plat-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .hero-card,.rev-head,.sentiment,.rev-cta{padding-left:20px;padding-right:20px}
+}
+</style>
+<link rel="stylesheet" href="movo-consistency.css"/>
+</head>
+<body>
+
+<header class="header movo-site-header">
+  <div class="nav-in movo-site-header__inner">
+    <a href="movo-banks-dashboard.html" class="logo movo-site-brand"><span class="movo-site-brand__name">movo</span></a>
+    <nav class="nav nav-links movo-site-nav" id="primary-navigation" aria-label="Primary navigation">
+      <a href="bank-ratings.html">Banks</a>
+      <a href="saving-rates.html">Savings</a>
+      <a href="transfers.html">Transfers</a>
+    </nav>
+    <button class="hamburger movo-site-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="page">
+
+  <div class="bc">
+    <a href="#">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      All banks
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <div class="card hero-card">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-meta">Wio Bank P.J.S.C.</div>
+        <h1 class="hero-name">Wio Bank</h1>
+        <p class="hero-desc">ADCB is one of the largest banks in the UAE, offering personal and business banking solutions for residents, expats, and companies. Services include current accounts, savings products, cards, loans, and international transfers.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn-solid">
+            Visit website
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <a href="#" class="btn-ghost">
+            Leave review
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="wio-wordmark">Wio</div>
+        <div class="rank-badge">
+          <div class="rank-num">#1</div>
+          <div class="rank-label">Rating for expats</div>
+          <a href="#" class="rank-link">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="card reviews-card">
+    <div class="rev-head">
+      <div class="rev-title">15,903 Reviews</div>
+    </div>
+
+    <div class="plat-grid">
+      <!-- App Store -->
+      <div class="plat-col">
+        <div class="plat-top">
+          <svg class="plat-icon" viewBox="0 0 24 24" fill="#000"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span class="plat-name">App Store</span>
+        </div>
+        <div class="plat-score">4.6</div>
+        <div class="stars">
+          <span class="s s-on">★</span><span class="s s-on">★</span><span class="s s-on">★</span><span class="s s-off">★</span><span class="s s-off">★</span>
+        </div>
+        <div class="plat-count">1.2K reviews</div>
+      </div>
+
+      <!-- Google Play -->
+      <div class="plat-col">
+        <div class="plat-top">
+          <svg class="plat-icon" viewBox="0 0 24 24">
+            <path d="M3 2.7L13.6 12 3 21.3V2.7z" fill="#EA4335"/>
+            <path d="M3 2.7l13.3 7.7-3.7 3.6L3 2.7z" fill="#FBBC05"/>
+            <path d="M3 21.3l9.6-11.3 3.7 3.6L3 21.3z" fill="#34A853"/>
+            <path d="M16.3 10.4L21 13a1 1 0 010 1.8l-4.7 2.6-3.7-4.4 3.7-2.6z" fill="#4285F4"/>
+          </svg>
+          <span class="plat-name">Google Play</span>
+        </div>
+        <div class="plat-score">4.6</div>
+        <div class="stars">
+          <span class="s s-on">★</span><span class="s s-on">★</span><span class="s s-on">★</span><span class="s s-off">★</span><span class="s s-off">★</span>
+        </div>
+        <div class="plat-count">1.2K reviews</div>
+      </div>
+
+      <!-- Google -->
+      <div class="plat-col">
+        <div class="plat-top">
+          <svg class="plat-icon" viewBox="0 0 24 24">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+          <span class="plat-name">Google</span>
+        </div>
+        <div class="plat-score">4.6</div>
+        <div class="stars">
+          <span class="s s-on">★</span><span class="s s-on">★</span><span class="s s-on">★</span><span class="s s-on">★</span><span class="s s-on">★</span>
+        </div>
+        <div class="plat-count">1.2K reviews</div>
+      </div>
+
+      <!-- Trustpilot -->
+      <div class="plat-col">
+        <div class="plat-top">
+          <svg class="plat-icon" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#00B67A"/>
+          </svg>
+          <span class="plat-name">Trustpilot</span>
+        </div>
+        <div class="plat-score">2.2</div>
+        <div class="stars">
+          <span class="s s-on">★</span><span class="s s-on">★</span><span class="s s-on">★</span><span class="s s-on">★</span><span class="s s-on">★</span>
+        </div>
+        <div class="plat-count">1.2K reviews</div>
+      </div>
+    </div>
+
+    <!-- Sentiment -->
+    <div class="sentiment">
+      <div class="sent-block">
+        <div class="sent-head">
+          <span class="sent-head-icon">👍</span>
+          <span class="sent-head-label">What people like</span>
+        </div>
+        <div class="tags">
+          <span class="tag tg">Good mobile app</span>
+          <span class="tag tg">Good mobile app</span>
+          <span class="tag tg">Fast opening</span>
+          <span class="tag tg">Fast scanning</span>
+          <span class="tag tg">Fast opening</span>
+        </div>
+        <p class="sent-text">ADCB is one of the largest banks in the UAE, offering personal and business banking solutions for residents, expats, and companies. Services include current accounts, savings products, cards, loans, and international transfers. ADCB is one of the largest banks in the UAE, offering personal and business banking solutions for residents, expats, and companies.</p>
+      </div>
+
+      <div class="sent-block">
+        <div class="sent-head">
+          <span class="sent-head-icon">👎</span>
+          <span class="sent-head-label">What people don't like</span>
+        </div>
+        <div class="tags">
+          <span class="tag tr">Good mobile app</span>
+          <span class="tag tr">Fast opening</span>
+          <span class="tag tr">Fast opening</span>
+        </div>
+        <p class="sent-text">ADCB is one of the largest banks in the UAE, offering personal and business banking solutions for residents, expats, and companies. Services include current accounts, savings products, cards, loans, and international transfers. ADCB is one of the largest banks in the UAE, offering personal and business banking solutions for residents, expats, and companies.</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="rev-cta">
+      <p>Help others — share your feedback about <strong>Wio Bank.</strong></p>
+      <a href="#" class="btn-solid">Review Wio Bank</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <div class="faq-title">Everything else you might ask</div>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-btn" onclick="faqToggle(this)">
+          Can I open a Wio account as an expat?
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-ans"><div class="faq-ans-inner">Yes — Wio Bank is built for UAE residents including expats. Open an account fully online with your Emirates ID and passport in under 5 minutes.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="faqToggle(this)">
+          What documents are required to open an account?
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-ans"><div class="faq-ans-inner">You'll need a valid Emirates ID, passport copy, and a UAE phone number. Additional documents may be required depending on your residency status.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="faqToggle(this)">
+          How long does it take to open a Wio account?
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-ans"><div class="faq-ans-inner">Typically 5–10 minutes through the mobile app, assuming your documents are ready and your ID scan goes through on the first attempt.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="faqToggle(this)">
+          Is there a minimum balance requirement?
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-ans"><div class="faq-ans-inner">No minimum balance for personal accounts. Business accounts may have different terms — check the Wio website for current details.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="faqToggle(this)">
+          Can I receive international transfers with Wio?
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-ans"><div class="faq-ans-inner">Yes, both incoming and outgoing international transfers (SWIFT) are supported. Fees and processing times vary by destination.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="faqToggle(this)">
+          Can I keep my Wio account if my visa is cancelled?
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-ans"><div class="faq-ans-inner">Your account may be frozen if your UAE residency visa is cancelled. Contact Wio support proactively to understand your options before the visa expires.</div></div>
+      </div>
+    </div>
+    <a href="#" class="faq-more">
+      View all FAQs
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+</div>
+
+<script>
+function faqToggle(btn) {
+  var item = btn.closest('.faq-item');
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+<script src="movo-ui.js"></script>
+<script src="movo-footer.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Top Rated Banks in UAE — MOVO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="bank-ratings.css?v=customer-score-2">
+<link rel="stylesheet" href="bank-ranking-shared.css?v=metrics-order-1">
+<link rel="stylesheet" href="movo-page-alignment.css?v=1">
+</head>
+<body>
+<header class="header movo-site-header"><div class="header-inner movo-site-header__inner"><a class="brand movo-site-brand" href="movo-banks-dashboard.html"><img src="https://www.figma.com/api/mcp/asset/8975ab39-792a-4f32-8499-3110fafaed7c" alt="movo"><span class="movo-site-brand__name">movo</span></a><nav class="nav movo-site-nav" aria-label="Primary navigation"><a href="bank-ratings.html" aria-current="page">Banks</a><a href="saving-rates.html">Savings</a><a href="transfers.html">Transfers</a></nav><button class="hamburger movo-site-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button></div></header>
+<nav class="mobile-nav movo-site-mobile-nav" id="mobile-nav" aria-label="Mobile navigation"><a href="bank-ratings.html">Banks</a><a href="saving-rates.html">Savings</a><a href="transfers.html">Transfers</a></nav>
+<main>
+<section class="ratings-hero" aria-labelledby="ratings-title"><div class="ratings-hero-inner"><a class="back" href="movo-banks-dashboard.html"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>Back to home</a><h1 id="ratings-title">Top Rated Banks</h1><p class="ratings-subtitle">Compare UAE banks ranked by Customer Score across available review platforms. Use the same filters and sorting from the dashboard to find digital, traditional, international and Islamic banks.</p></div></section>
+<section class="filter-bar" aria-label="Bank ranking filters">
+  <div class="filter-inner">
+    <div class="filter-chips" aria-label="Filter banks by type">
+      <button type="button" class="chip chip-active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="chip chip-default" data-filter="digital" aria-pressed="false">Digital</button>
+      <button type="button" class="chip chip-default" data-filter="traditional" aria-pressed="false">Traditional</button>
+      <button type="button" class="chip chip-default" data-filter="international" aria-pressed="false">International</button>
+      <button type="button" class="chip chip-default" data-filter="islamic" aria-pressed="false">Islamic</button>
+    </div>
+    <div class="filter-actions">
+      <label class="sort-dropdown" for="bank-sort">
+        <span class="sr-only">Sort banks</span>
+        <select class="sort-select" id="bank-sort">
+          <option value="score">Customer Score</option>
+          <option value="founded">Founded</option>
+          <option value="size">Size</option>
+        </select>
+      </label>
+    </div>
+  </div>
+</section>
+<section class="bank-list" id="bank-list" aria-label="Bank ranking table"><div class="bank-list-inner"></div><div class="empty">No banks found for this category.</div></section>
+</main>
+<script src="bank-ratings.js?v=customer-score-2"></script>
+<script>
+const menuButton=document.querySelector('.hamburger'),mobileNav=document.getElementById('mobile-nav');
+menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menuButton.setAttribute('aria-label',open?'Open menu':'Close menu');mobileNav.classList.toggle('open',!open)});
+</script>
+<script src="movo-footer.js?v=1"></script>
+</body>
+</html>

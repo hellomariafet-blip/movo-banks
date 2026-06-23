@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Best Savings Accounts — MOVO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#151515;--blue:#1B56F5;--text-2:#606060;--text-3:#878787;--border:#E0E0E0;--border-sub:#ECECEC;--bg:#F7F8FA;--surface:#F5F5F5;--page-px:80px}
+body{font-family:'Inter',Arial,sans-serif;color:var(--black);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}button{font-family:inherit}img{display:block;max-width:100%}
+.header{background:#fff;border-bottom:1px solid var(--border-sub);position:sticky;top:0;z-index:100;box-shadow:0 1px 0 var(--border-sub),0 2px 8px rgba(0,0,0,.04)}
+.header-inner{max-width:1440px;margin:0 auto;padding:0 var(--page-px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}.brand-logo{width:44px;height:32px;object-fit:contain}
+.brand-name{font-family:'Montserrat Alternates',sans-serif;font-weight:800;font-size:26px;line-height:1;letter-spacing:-.5px}
+.nav{display:flex;gap:8px;align-items:center}.nav a{font-weight:500;font-size:15px;color:var(--text-2);padding:8px 14px;border-radius:8px}.nav a:hover{background:var(--surface);color:var(--black)}
+.nav a[aria-current=page]{background:#eef2ff;color:var(--blue)}
+.nav-cta{display:flex;align-items:center;gap:8px;background:transparent;border:1.5px solid var(--border);border-radius:999px;padding:9px 20px;font-size:14px;font-weight:600;color:var(--black)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:none}.hamburger span{display:block;width:22px;height:2px;background:var(--black);border-radius:2px}
+.mobile-nav{display:none}
+.hero{padding:72px var(--page-px) 50px;background:#fff}
+.hero-inner,.rates-inner{width:100%;max-width:1200px;min-width:0;margin:0 auto}
+.back{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-size:15px;margin-bottom:36px}
+.back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+h1{font-family:'Montserrat Alternates',sans-serif;font-size:clamp(48px,6vw,78px);line-height:1.05;font-weight:900;letter-spacing:-2px}
+.hero p{max-width:720px;margin-top:18px;color:var(--text-2);font-size:17px;line-height:27px}
+.calculator{padding:0 var(--page-px);background:#fff}
+.rates{padding:42px var(--page-px) 80px;background:#fff}
+.rates-grid{display:flex;flex-direction:column;gap:14px}
+.rate-card{display:grid;grid-template-columns:minmax(220px,1.25fr) minmax(115px,.5fr) minmax(120px,.55fr) minmax(110px,.5fr) minmax(210px,1fr) auto;align-items:center;gap:22px;padding:26px 28px;background:#fff;border:1px solid var(--border);border-radius:18px}
+.bank{display:flex;align-items:center;gap:16px;min-width:0}.bank img{width:58px;height:58px;border-radius:50%;object-fit:cover;border:1px solid #ECECEC;flex:none}.bank>div{min-width:0}
+.bank-name{font-size:18px;font-weight:700}.product{margin-top:4px;color:var(--text-3);font-size:13px}
+.label{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--text-3)}
+.value{margin-top:6px;font-family:'Montserrat Alternates',sans-serif;font-size:27px;font-weight:800}
+.detail-value{margin-top:7px;font-size:14px;line-height:20px;font-weight:600}
+.terms{margin-top:6px;color:var(--text-2);font-size:13px;line-height:20px}
+.view{padding:11px 18px;border-radius:999px;background:var(--black);color:#fff;font-size:13px;font-weight:600;white-space:nowrap}
+.notice{margin-top:22px;color:var(--text-3);font-size:12px;line-height:20px}
+.rate-card[hidden]{display:none}.estimate-note{display:block;margin-top:5px;color:var(--text-3);font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:500}
+@media(max-width:1100px){
+  :root{--page-px:40px}
+  .rate-card{grid-template-columns:1fr 1fr;gap:22px 18px}
+  .bank,.special,.view{grid-column:1/-1}
+  .view{text-align:center}
+}
+@media(max-width:800px){
+  :root{--page-px:20px}.header-inner{height:60px}.brand-logo{width:32px;height:24px}.brand-name{font-size:20px}.nav,.nav-cta{display:none}.hamburger{display:flex}
+  .mobile-nav{position:fixed;top:60px;left:0;right:0;z-index:99;padding:12px 20px 20px;background:#fff;border-bottom:1px solid var(--border-sub);box-shadow:0 12px 28px rgba(0,0,0,.08)}.mobile-nav.open{display:grid}.mobile-nav a{padding:14px 4px;border-bottom:1px solid var(--border-sub);font-size:15px;font-weight:650}.mobile-nav a:last-child{border:0}
+  .hamburger span{transition:.2s ease}.hamburger[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hamburger[aria-expanded=true] span:nth-child(2){opacity:0}.hamburger[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .hero{padding:32px var(--page-px) 34px}.back{margin-bottom:26px}h1{font-size:40px;line-height:1.07;letter-spacing:-1.2px;overflow-wrap:anywhere}
+  .rates{padding-top:28px}.rate-card{grid-template-columns:1fr 1fr;gap:22px 16px;padding:22px}.bank{grid-column:1/-1}.special{grid-column:1/-1}.view{grid-column:1/-1;text-align:center}
+  .bank-name{font-size:16px}.product{font-size:12px}.value{font-size:23px}.terms{overflow-wrap:anywhere}
+}
+@media(max-width:420px){
+  .rate-card{grid-template-columns:1fr;gap:16px}
+  .bank,.special,.view{grid-column:auto}
+}
+</style>
+<link rel="stylesheet" href="movo-consistency.css"/>
+<link rel="stylesheet" href="movo-savings-calculator.css"/>
+<link rel="stylesheet" href="movo-page-alignment.css?v=1"/>
+</head>
+<body>
+<header class="header movo-site-header">
+  <div class="header-inner movo-site-header__inner">
+    <a href="movo-banks-dashboard.html" class="brand movo-site-brand">
+      <img class="brand-logo" src="https://www.figma.com/api/mcp/asset/8975ab39-792a-4f32-8499-3110fafaed7c" alt="movo"/>
+      <span class="brand-name movo-site-brand__name">movo</span>
+    </a>
+    <nav class="nav movo-site-nav" aria-label="Primary navigation">
+      <a href="bank-ratings.html">Banks</a>
+      <a href="saving-rates.html" aria-current="page">Savings</a>
+      <a href="transfers.html">Transfers</a>
+    </nav>
+    <button class="hamburger movo-site-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav movo-site-mobile-nav" id="mobile-nav" aria-label="Mobile navigation"><a href="bank-ratings.html">Banks</a><a href="saving-rates.html">Saving accounts</a><a href="transfers.html">Money transfers</a></nav>
+<main>
+  <section class="hero"><div class="hero-inner"><a class="back" href="movo-banks-dashboard.html"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>All banks</a><h1>Best Savings Accounts</h1><p>Compare advertised annual returns across featured UAE banks. Check eligibility, balance requirements and promotional conditions before applying.</p></div></section>
+  <section class="calculator">
+    <div class="movo-savings-widget" data-movo-savings-calculator data-mode="inline"></div>
+  </section>
+  <section class="rates"><div class="rates-inner"><div class="savings-table-tools" aria-label="Savings table controls">
+    <div class="savings-filter-chips" aria-label="Savings filters">
+      <button class="savings-chip savings-chip-active" type="button" data-savings-filter="all" aria-pressed="true">All</button>
+      <button class="savings-chip savings-chip-default" type="button" data-savings-filter="no-minimum" aria-pressed="false">No Minimum Amount</button>
+    </div>
+    <div class="savings-sort-dropdown">
+      <select class="savings-sort-select" id="savings-sort" aria-label="Sort savings accounts">
+        <option value="earnings" selected>Maximum Earnings</option>
+      </select>
+    </div>
+  </div><div class="rates-grid">
+    <article class="rate-card"><div class="bank"><img src="assets/bank-logos/dib.jpg" alt="Dubai Islamic Bank"/><div><div class="bank-name">Dubai Islamic Bank</div><div class="product">Al Islami Savings</div></div></div><div><div class="label">Maximum return</div><div class="value">6.60%</div></div><div><div class="label">Minimum amount</div><div class="detail-value">AED 50,000</div></div><div class="special"><div class="label">Special conditions</div><div class="terms">Expected profit p.a. on fresh funds; 6.60% requires a new salary transfer of AED 10,000+.</div></div></article>
+    <article class="rate-card"><div class="bank"><img src="assets/bank-logos/mashreq.jpg" alt="Mashreq"/><div><div class="bank-name">Mashreq</div><div class="product">NEO PLUS Saver</div></div></div><div><div class="label">Maximum return</div><div class="value">6.25%</div></div><div><div class="label">Minimum amount</div><div class="detail-value">No minimum*</div></div><div class="special"><div class="label">Special conditions</div><div class="terms">Salary transfer of AED 10,000+; without it, maintain AED 50,000 monthly average balance.</div></div></article>
+    <article class="rate-card"><div class="bank"><img src="assets/bank-logos/wio.jpg" alt="Wio Bank"/><div><div class="bank-name">Wio Bank</div><div class="product">Fixed Saving Spaces</div></div></div><div><div class="label">Maximum return</div><div class="value">6.00%</div></div><div><div class="label">Minimum amount</div><div class="detail-value">No minimum</div></div><div class="special"><div class="label">Special conditions</div><div class="terms">Available with Salary or eligible Family Plan and salary transfer.</div></div></article>
+    <article class="rate-card"><div class="bank"><img src="assets/bank-logos/emirates-nbd.jpg" alt="Emirates NBD"/><div><div class="bank-name">Emirates NBD</div><div class="product">Plus Saver</div></div></div><div><div class="label">Maximum return</div><div class="value">5.00%</div></div><div><div class="label">Minimum amount</div><div class="detail-value">Not specified</div></div><div class="special"><div class="label">Special conditions</div><div class="terms">Promotional interest p.a. on eligible new money maintained through the offer period.</div></div></article>
+    <article class="rate-card"><div class="bank"><img src="assets/bank-logos/fab.jpg" alt="First Abu Dhabi Bank"/><div><div class="bank-name">First Abu Dhabi Bank</div><div class="product">iSave Account</div></div></div><div><div class="label">Maximum return</div><div class="value">4.00%</div></div><div><div class="label">Minimum amount</div><div class="detail-value">No minimum</div></div><div class="special"><div class="label">Special conditions</div><div class="terms">Promotional interest p.a. applies to eligible new funds; calculated on monthly average balance.</div></div></article>
+    <article class="rate-card"><div class="bank"><img src="assets/bank-logos/rakbank.jpg" alt="RAKBANK"/><div><div class="bank-name">RAKBANK</div><div class="product">Savings Account welcome bonus</div></div></div><div><div class="label">Maximum return</div><div class="value">6.25%</div></div><div><div class="label">Minimum amount</div><div class="detail-value">No minimum, 3 months</div></div><div class="special"><div class="label">Special conditions</div><div class="terms">Welcome bonus interest p.a.; standard AED 3,000 monthly balance applies after the initial period.</div></div></article>
+    <article class="rate-card"><div class="bank"><img src="assets/bank-logos/adcb.jpg" alt="ADCB"/><div><div class="bank-name">ADCB</div><div class="product">Goal Savings Account</div></div></div><div><div class="label">Maximum return</div><div class="value">4.50%</div></div><div><div class="label">Minimum amount</div><div class="detail-value">Set in app</div></div><div class="special"><div class="label">Special conditions</div><div class="terms">Automated scheduled contributions; bonus interest is linked to reaching the savings goal.</div></div></article>
+    <article class="rate-card"><div class="bank"><img src="assets/bank-logos/hsbc.jpg" alt="HSBC UAE"/><div><div class="bank-name">HSBC UAE</div><div class="product">Regular Savings bonus offer</div></div></div><div><div class="label">Maximum return</div><div class="value">3.00%</div></div><div><div class="label">Minimum amount</div><div class="detail-value">Not specified</div></div><div class="special"><div class="label">Special conditions</div><div class="terms">Bonus interest p.a. applies to eligible new money; offer terms apply.</div></div></article>
+    <article class="rate-card"><div class="bank"><img src="assets/bank-logos/cbd.jpg" alt="Commercial Bank of Dubai"/><div><div class="bank-name">Commercial Bank of Dubai</div><div class="product">Bonus Booster Deposit</div></div></div><div><div class="label">Annualized return</div><div class="value">≈2.75%</div></div><div><div class="label">Minimum amount</div><div class="detail-value">AED 1,000 monthly</div></div><div class="special"><div class="label">Special conditions</div><div class="terms">Annualized equivalent of up to 8.25% total expected return over 36 months. All monthly deposits are required for the maturity bonus.</div></div></article>
+    <article class="rate-card"><div class="bank"><img src="assets/bank-logos/adib.jpg" alt="Abu Dhabi Islamic Bank"/><div><div class="bank-name">Abu Dhabi Islamic Bank</div><div class="product">Investment Deposit Account</div></div></div><div><div class="label">Expected profit</div><div class="value">Variable</div></div><div><div class="label">Minimum amount</div><div class="detail-value">AED 10,000</div></div><div class="special"><div class="label">Special conditions</div><div class="terms">Sharia-compliant expected profit varies by investment tier and declared period.</div></div></article>
+  </div><p class="notice">Rates shown are maximum advertised returns and may change. Product terms, eligibility and calculation methods differ by bank.</p></div></section>
+</main>
+<script src="movo-savings-calculator.js"></script>
+<script>
+function initSavingsPage() {
+  const menuButton=document.querySelector('.hamburger');
+  const mobileNav=document.getElementById('mobile-nav');
+  menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menuButton.setAttribute('aria-label',open?'Open menu':'Close menu');mobileNav.classList.toggle('open',!open)});
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSavingsPage);
+else initSavingsPage();
+</script>
+<script src="movo-footer.js?v=1"></script>
+</body>
+</html>

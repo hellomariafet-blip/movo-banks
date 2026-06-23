@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Best Transfer Rates — MOVO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#151515;--blue:#1b56f5;--blue-dark:#1446d4;--blue-lt:#eef2ff;--text-2:#606060;--text-3:#878787;--muted:#ababab;--border:#e0e0e0;--border-sub:#ececec;--surface:#f5f6f8;--page-px:80px}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;color:var(--black);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}button,input,select{font:inherit}button{cursor:pointer}img{display:block;max-width:100%}
+:focus-visible{outline:3px solid rgba(27,86,245,.24);outline-offset:3px}
+.header{height:72px;background:#fff;border-bottom:1px solid var(--border-sub);position:sticky;top:0;z-index:30;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.header-inner{max-width:1440px;height:100%;padding:0 var(--page-px);margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:10px}.brand img{width:44px;height:32px;object-fit:contain}.brand span{font:800 26px/1 "Montserrat Alternates",sans-serif}
+.nav{display:flex;gap:8px}.nav a{padding:8px 14px;border-radius:8px;color:var(--text-2);font-size:15px}.nav a:hover{background:var(--surface);color:var(--black)}.nav a[aria-current=page]{background:var(--blue-lt);color:var(--blue)}
+.hamburger,.mobile-nav{display:none}
+.hamburger{border:0;background:none;padding:8px}.hamburger span{display:block;width:22px;height:2px;margin:5px;background:var(--black);transition:.2s ease}
+.hero{padding:58px var(--page-px) 40px;background:linear-gradient(180deg,#fff 0%,#f8faff 100%)}
+.inner{max-width:1200px;margin:auto}
+.back{display:inline-flex;align-items:center;gap:7px;color:var(--blue);font-size:14px;font-weight:600;margin-bottom:30px}
+.back svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2}
+h1{max-width:900px;font:900 clamp(50px,6vw,78px)/1.02 "Montserrat Alternates",sans-serif;letter-spacing:-2.5px}
+.hero-copy{max-width:720px;margin-top:18px;color:var(--text-2);font-size:17px;line-height:27px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:24px}.trust span{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}.trust i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff;font-style:normal;font-size:12px}
+.workspace{padding:0 var(--page-px) 42px;background:linear-gradient(180deg,#f8faff 0,#fff 260px)}
+:root{--field-h:68px;--field-r:16px}
+.transfer-widget{max-width:1200px;margin:0 auto;padding:62px 28px 38px;background:#f0f2f6;border:1px solid #e4e7ef;border-radius:22px;position:relative;z-index:1}
+.direction-tabs{width:max-content;max-width:100%;display:flex;align-items:center;justify-content:flex-start;gap:0;margin:-28px auto 28px;padding:4px;border:1.5px solid rgba(27,86,245,.36);border-radius:999px;background:#fff}
+.direction-tab{min-height:38px;padding:0 18px;border:0;border-radius:999px;background:transparent;color:var(--text-2);font-family:Inter,Arial,sans-serif;font-size:14.5px;font-weight:700;line-height:18px;cursor:pointer;white-space:nowrap}
+.direction-tab[aria-pressed=true]{background:var(--blue);color:#fff}
+.direction-tab:hover{color:var(--blue)}
+.direction-tab[aria-pressed=true]:hover{background:var(--blue-dark);color:#fff}
+.transfer-form{display:grid;grid-template-columns:2fr 1.5fr .85fr auto;align-items:center;gap:10px}
+.transfer-field,.send-to-field{display:flex;flex-direction:column;justify-content:center;min-width:0;height:var(--field-h);padding:0 18px;background:#fff;border:1px solid var(--border-sub);border-radius:var(--field-r);box-shadow:0 2px 8px rgba(25,31,45,.05);box-sizing:border-box}
+.send-to-field{cursor:pointer;position:relative}
+.transfer-label{display:block;margin-bottom:8px;color:var(--text-3);font-size:10px;line-height:1.2;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.send-to-display{display:flex;align-items:center;gap:9px;margin-top:6px}
+.country-name{font-size:15px;font-weight:650;color:var(--black);white-space:nowrap}
+.country-flag{font-size:18px;line-height:1;flex-shrink:0;display:inline-block}
+.country-name{overflow:hidden;text-overflow:ellipsis}
+.field-chevron{width:18px;height:18px;fill:none;stroke:var(--text-3);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;margin-left:auto;flex-shrink:0}
+.field-select-overlay{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;z-index:1}
+.transfer-select,.transfer-input,.transfer-currency{width:100%;height:31px;border:0;outline:0;background:transparent;color:var(--black);font-family:inherit;font-size:15px;font-weight:650}
+.select-wrap{position:relative}
+.select-wrap::after{content:"";position:absolute;right:4px;top:9px;width:7px;height:7px;border-right:1.7px solid var(--black);border-bottom:1.7px solid var(--black);transform:rotate(45deg);pointer-events:none}
+.amount-combo{display:grid;grid-template-columns:minmax(90px,1fr) 88px;align-items:center;gap:12px}
+.transfer-input{font-size:17px;font-weight:750;min-width:0}.transfer-input::placeholder{color:var(--muted)}
+.currency-wrap{padding-left:13px;border-left:1px solid var(--border)}.currency-wrap::after{right:1px}
+.transfer-currency{appearance:none;-webkit-appearance:none;padding-right:19px;cursor:pointer}
+.receive-currency-field{min-width:110px}.receive-currency-field .select-wrap::after{right:3px;top:10px}.receive-currency-field .transfer-currency{height:31px;padding-right:27px;font-size:17px;font-weight:750}
+.transfer-submit{margin:0;padding:0 28px;height:var(--field-h);border:0;border-radius:var(--field-r);background:var(--blue);color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:Inter,Arial,sans-serif;font-size:15px;font-weight:650;white-space:nowrap;transition:background .2s ease,transform .1s ease,box-shadow .2s ease;min-width:140px}
+.transfer-submit:hover{background:var(--blue-dark);box-shadow:0 7px 18px rgba(27,86,245,.28)}.transfer-submit:active{transform:scale(.97)}
+.transfer-submit svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.2}
+.transfer-benefits{margin-top:24px;display:flex;flex-wrap:wrap;justify-content:center;gap:7px 41px}
+.transfer-benefit{display:flex;align-items:center;gap:9.6px;padding:0;color:var(--text-2);font-size:15.6px;line-height:21.6px;font-weight:400;background:transparent;border:0}
+.benefit-check{width:24px;height:24px;flex:0 0 24px;display:grid;place-items:center;color:var(--blue)}
+.benefit-check svg{width:21.6px;height:21.6px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.transfer-widget .movo-field__control:focus,
+.transfer-widget .movo-field__control:focus-visible {
+  outline: 0;
+  box-shadow: none;
+}
+.currency-value{display:inline-flex;align-items:baseline;gap:.18em;white-space:nowrap;color:inherit}
+.dirham-mark{position:relative;display:inline-block;width:.72em;height:.86em;flex:0 0 .72em;vertical-align:-.08em;color:currentColor;background:linear-gradient(currentColor,currentColor) 47% 36%/.78em .08em no-repeat,linear-gradient(currentColor,currentColor) 47% 56%/.78em .08em no-repeat}
+.dirham-mark::before{content:"D";position:absolute;inset:0;font:inherit;line-height:.9}
+.error{display:none;margin-top:10px;color:#b42318;font-size:12px;font-weight:600}.error.visible{display:block}
+.transfer-results{display:block;padding:0 var(--page-px) 80px;background:#fff}
+.transfer-results-inner{width:100%;max-width:1200px;margin:0 auto}
+.transfer-empty{padding:64px var(--page-px) 70px;background:#fff;text-align:center}
+.transfer-empty[hidden]{display:none}
+.transfer-empty-inner{max-width:760px;margin:0 auto;color:var(--black);font-family:"Montserrat Alternates",sans-serif;font-size:clamp(22px,2.2vw,30px);font-weight:700;line-height:1.22;letter-spacing:0}
+.results-head{display:flex;align-items:flex-end;justify-content:flex-end;gap:20px;margin-bottom:18px}
+.results-head > div{display:none}
+.results-title{font:700 24px/30px "Montserrat Alternates",sans-serif}.results-copy{margin-top:5px;color:var(--text-3);font-size:12px;line-height:18px}
+.sort{min-width:190px;min-height:40px;padding:9px 36px 9px 16px;border:1.5px solid rgba(27,86,245,.36);border-radius:999px;background:#fff;color:var(--blue);font:500 13.5px/18px Inter,Arial,sans-serif;appearance:none;-webkit-appearance:none;cursor:pointer}
+.transfer-sort{position:relative;display:inline-flex;align-items:center;flex-shrink:0}.transfer-sort::after{content:"";position:absolute;right:14px;width:8px;height:8px;border-right:1.8px solid var(--blue);border-bottom:1.8px solid var(--blue);transform:translateY(-2px) rotate(45deg);pointer-events:none}
+.providers{display:flex;flex-direction:column;gap:14px}
+.provider{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(260px,1.12fr) minmax(155px,.72fr) minmax(115px,.5fr) minmax(145px,.68fr) minmax(100px,.42fr);align-items:center;gap:18px;min-height:131px;padding:26px 28px;background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:0 0 0 1px var(--border-sub);transition:transform 220ms cubic-bezier(.22,1,.36,1),box-shadow 220ms ease,border-color 220ms ease}
+.provider::before{content:"";position:absolute;top:12px;bottom:12px;left:0;width:3px;border-radius:0 3px 3px 0;background:var(--blue);opacity:0;transition:opacity 200ms ease}
+.provider:hover{transform:translateY(-4px);border-color:rgba(27,86,245,.15);box-shadow:0 16px 48px rgba(0,0,0,.1)}.provider:hover::before{opacity:1}.provider:active{transform:translateY(0)}
+.provider-brand{display:flex;align-items:center;gap:16px;min-width:0}.provider-logo{width:58px;height:58px;flex:0 0 58px;border:1px solid #ececec;border-radius:50%;background:#fff;object-fit:cover;padding:0;box-shadow:none}.provider-logo-mark{display:grid;place-items:center;color:var(--blue);font-size:14px;font-weight:800;letter-spacing:.02em}
+.provider-name{font-size:18px;font-weight:800;line-height:24px}.status{display:inline-block;margin-top:6px;color:var(--text-3);font-size:13px;line-height:20px}
+.metric{align-self:start}.metric > span{display:block;min-height:16px;color:var(--text-3);font-size:11px;line-height:16px;text-transform:uppercase;letter-spacing:.8px}.metric strong{display:block;margin-top:6px;color:var(--black);font-family:"Montserrat Alternates",sans-serif;font-size:26px;font-weight:900;line-height:1;letter-spacing:-.5px}.metric.primary strong{color:var(--blue)}.exchange-rate strong{font-size:18px;line-height:1.18;letter-spacing:0}
+.disclaimer{margin-top:18px;color:var(--text-3);font-size:12px;line-height:18px}
+.how{padding:72px var(--page-px)}.section-title{font:700 clamp(28px,3vw,40px)/1.1 "Montserrat Alternates",sans-serif}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}.step{padding:24px;border:1px solid var(--border-sub);border-radius:18px}.step-num{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--blue-lt);color:var(--blue);font-weight:800}.step h2{margin-top:18px;font:700 18px/24px "Montserrat Alternates",sans-serif}.step p{margin-top:7px;color:var(--text-2);font-size:13px;line-height:21px}
+.footer{padding:36px var(--page-px);background:var(--black);color:#fff}.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:24px}.footer strong{font:800 20px "Montserrat Alternates",sans-serif}.footer p{color:rgba(255,255,255,.45);font-size:12px}
+@media(max-width:1050px){:root{--page-px:40px}.transfer-form{grid-template-columns:1fr 1fr}.transfer-submit{width:100%}.provider{grid-template-columns:1fr 1fr}.transfer-benefits{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:700px){
+  :root{--page-px:20px}.header{height:60px}.brand img{width:32px;height:24px}.brand span{font-size:20px}.nav{display:none}.hamburger{display:block}
+  .mobile-nav{position:fixed;top:60px;left:0;right:0;z-index:29;padding:12px 20px 20px;background:#fff;border-bottom:1px solid var(--border-sub);box-shadow:0 12px 28px rgba(0,0,0,.08)}.mobile-nav.open{display:grid}.mobile-nav a{padding:14px 4px;border-bottom:1px solid var(--border-sub);font-size:15px;font-weight:650}.mobile-nav a:last-child{border:0}
+  .hamburger[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}.hamburger[aria-expanded=true] span:nth-child(2){opacity:0}.hamburger[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .hero{padding:32px var(--page-px) 34px}.back{margin-bottom:24px}h1{font-size:42px;line-height:1.04;letter-spacing:-1.5px}.hero-copy{font-size:15px;line-height:24px}.trust{display:grid;grid-template-columns:1fr 1fr;gap:10px}.trust span{font-size:11px}
+  .workspace{padding:0 var(--page-px) 34px}.transfer-widget{width:100%;padding:34px 14px 18px;border-radius:17px}.direction-tabs{margin:-10px 0 18px;padding:4px;overflow-x:auto}.direction-tab{font-size:13.5px;padding:0 12px}.transfer-form{grid-template-columns:1fr;gap:8px}.transfer-field,.send-to-field{height:64px;border-radius:12px}.transfer-submit{width:100%;min-height:58px;height:58px;border-radius:12px}.transfer-benefits{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;justify-content:stretch;margin-top:18px}.transfer-benefit{align-items:flex-start;font-size:13.2px;line-height:19.2px}
+  .transfer-empty{padding:44px var(--page-px) 54px}.transfer-empty-inner{font-size:22px;line-height:1.24}.transfer-results{padding:0 var(--page-px) 54px}.results-head{display:block}.transfer-sort,.sort{width:100%;margin-top:14px}.provider{grid-template-columns:1fr;gap:16px;padding:24px 22px;min-height:0}.metric:not(.primary):not(.speed){display:none}
+  .how{padding:52px var(--page-px)}.steps{grid-template-columns:1fr;gap:12px}.step{padding:20px}.footer-inner{flex-direction:column}
+}
+
+</style>
+<link rel="stylesheet" href="movo-consistency.css"/>
+<link rel="stylesheet" href="movo-page-alignment.css?v=1"/>
+</head>
+<body>
+<header class="header movo-site-header">
+  <div class="header-inner movo-site-header__inner">
+    <a class="brand movo-site-brand" href="movo-banks-dashboard.html"><img src="https://www.figma.com/api/mcp/asset/8975ab39-792a-4f32-8499-3110fafaed7c" alt="movo"><span class="movo-site-brand__name">movo</span></a>
+    <nav class="nav movo-site-nav" aria-label="Primary navigation"><a href="bank-ratings.html">Banks</a><a href="saving-rates.html">Savings</a><a href="transfers.html" aria-current="page">Transfers</a></nav>
+    <button class="hamburger movo-site-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav movo-site-mobile-nav" id="mobile-nav" aria-label="Mobile navigation"><a href="bank-ratings.html">Banks</a><a href="saving-rates.html">Saving accounts</a><a href="transfers.html">Money transfers</a></nav>
+<main>
+  <section class="hero"><div class="inner">
+    <a class="back" href="movo-banks-dashboard.html"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back to overview</a>
+    <h1>Best Transfer Rates</h1>
+    <p class="hero-copy">Estimate how much arrives, compare fees and speed, then review the provider’s final quote before sending.</p>
+  </div></section>
+  <section class="workspace"><div class="transfer-widget" id="transfer-comparison">
+    <div class="direction-tabs" aria-label="Transfer direction">
+      <button class="direction-tab" id="direction-from" type="button" aria-pressed="true">Send from UAE</button>
+      <button class="direction-tab" id="direction-to" type="button" aria-pressed="false">Send to UAE</button>
+    </div>
+    <form id="transfer-form" novalidate>
+      <div class="transfer-form">
+        <label class="movo-field movo-field--calculator transfer-field">
+          <span class="movo-label transfer-label">You send</span>
+          <span class="movo-field__control-row movo-field__control-row--split amount-combo">
+            <input class="movo-field__control transfer-input" id="transfer-amount" type="text" inputmode="decimal" placeholder="Enter amount" aria-describedby="transfer-error"/>
+            <span class="select-wrap currency-wrap">
+              <select class="movo-field__control transfer-currency" id="send-currency" aria-label="Sending currency">
+                <option>AED</option>
+                <option>USD</option>
+                <option>GBP</option>
+                <option>EUR</option>
+                <option>AUD</option>
+                <option>INR</option>
+                <option>CAD</option>
+                <option>PHP</option>
+              </select>
+            </span>
+          </span>
+        </label>
+        <div class="movo-field movo-field--calculator send-to-field">
+          <span class="movo-label transfer-label" id="send-to-label">Send to</span>
+          <div class="movo-field__control-row send-to-display">
+            <span class="country-flag" id="to-flag">🇬🇧</span>
+            <span class="movo-field__control country-name" id="to-name">United Kingdom</span>
+            <svg class="field-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+          <select class="field-select-overlay" id="corridor-country" aria-label="Destination country">
+            <option value="GB">United Kingdom</option>
+            <option value="US">United States</option>
+            <option value="AU">Australia</option>
+            <option value="IN">India</option>
+            <option value="DE">Germany</option>
+            <option value="FR">France</option>
+            <option value="CA">Canada</option>
+            <option value="PH">Philippines</option>
+          </select>
+        </div>
+        <label class="movo-field movo-field--calculator transfer-field receive-currency-field">
+          <span class="movo-label transfer-label">They receive</span>
+          <span class="movo-field__control-row select-wrap">
+            <select class="movo-field__control transfer-currency" id="receive-currency" aria-label="Receiving currency">
+              <option>GBP</option>
+              <option>USD</option>
+              <option>AED</option>
+              <option>EUR</option>
+              <option>AUD</option>
+              <option>INR</option>
+              <option>CAD</option>
+              <option>PHP</option>
+            </select>
+          </span>
+        </label>
+        <button class="transfer-submit" type="submit" aria-label="Find rates">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <span>Find rates</span>
+        </button>
+      </div>
+      <p class="transfer-error" id="transfer-error" hidden>Please enter an amount greater than zero.</p>
+    </form>
+    <div class="transfer-benefits" aria-label="Transfer comparison benefits">
+      <span class="transfer-benefit"><span class="benefit-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-8M22 19H2"/></svg></span>Compare 20+ partners</span>
+      <span class="transfer-benefit"><span class="benefit-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3Z"/><path d="m9 12 2 2 4-5"/></svg></span>Licensed and trusted partners</span>
+      <span class="transfer-benefit"><span class="benefit-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m19 5-14 14"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></svg></span>Best rates & low fees</span>
+      <span class="transfer-benefit"><span class="benefit-check"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>Secure and confidential</span>
+    </div>
+  </div></section>
+  <section class="transfer-empty" id="transfer-empty" aria-live="polite">
+    <h3 class="transfer-empty-inner">Add an amount to see the best transfer options for this route.</h3>
+  </section>
+  <section class="transfer-results results" id="results" aria-live="polite" hidden>
+    <div class="transfer-results-inner">
+      <div class="results-head"><div><h2 class="results-title" id="results-title">Transfer comparison</h2><p class="results-copy" id="results-copy"></p></div><span class="transfer-sort"><select class="sort" id="sort" aria-label="Sort transfer results"><option value="receive">Recipient gets most</option><option value="fee">Lowest fee</option><option value="speed">Fastest transfer</option></select></span></div>
+      <div class="providers" id="providers"></div>
+      <p class="disclaimer">Always confirm the final exchange rate, fee and delivery time on the provider’s website. Intermediary or recipient-bank charges may apply.</p>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="footer-inner"><strong>MOVO</strong><p>Independent comparison estimates for UAE consumers.</p></div></footer>
+<script>
+const countries={GB:{currency:'GBP',name:'United Kingdom',flag:'🇬🇧'},US:{currency:'USD',name:'United States',flag:'🇺🇸'},AU:{currency:'AUD',name:'Australia',flag:'🇦🇺'},IN:{currency:'INR',name:'India',flag:'🇮🇳'},DE:{currency:'EUR',name:'Germany',flag:'🇩🇪'},FR:{currency:'EUR',name:'France',flag:'🇫🇷'},CA:{currency:'CAD',name:'Canada',flag:'🇨🇦'},PH:{currency:'PHP',name:'Philippines',flag:'🇵🇭'}};
+const perAed={AED:1,GBP:.20535,USD:.27229,INR:23.25,PHP:15.82,AUD:.419,EUR:.2365,CAD:.373};
+const providers=[{name:'Wio Bank',spread:.007,fee:0,speed:2,status:'App quote required',logo:'assets/bank-logos/wio.jpg',mark:'WIO'},{name:'Wise',spread:.0065,fee:65.6,speed:1,status:'Availability varies',logo:'assets/transfer-logos/wise.svg',mark:'WISE'},{name:'LuLu Money',spread:.014,fee:25,speed:2,status:'Estimated quote',logo:'assets/transfer-logos/lulu-money.png',mark:'LULU'},{name:'Al Ansari Exchange',spread:.019,fee:30,speed:1,status:'Estimated quote',logo:'assets/transfer-logos/al-ansari.png',mark:'AA'},{name:'Mashreq Quick Remit',spread:.017,fee:25,speed:1,status:'App quote required',logo:'assets/bank-logos/mashreq.jpg',mark:'M'},{name:'Western Union',spread:.021,fee:40,speed:1,status:'Estimated quote',logo:'assets/transfer-logos/western-union.png',mark:'WU'},{name:'Emirates NBD',spread:.027,fee:26.25,speed:3,status:'Bank rate estimate',logo:'assets/bank-logos/emirates-nbd.jpg',mark:'ENBD'}];
+let rows=[];
+let isOutbound=true;
+const form=document.getElementById('transfer-form'),directionFrom=document.getElementById('direction-from'),directionTo=document.getElementById('direction-to'),country=document.getElementById('corridor-country'),toFlag=document.getElementById('to-flag'),toName=document.getElementById('to-name'),sendToLabel=document.getElementById('send-to-label'),amount=document.getElementById('transfer-amount'),send=document.getElementById('send-currency'),receive=document.getElementById('receive-currency'),emptyState=document.getElementById('transfer-empty'),results=document.getElementById('results'),sort=document.getElementById('sort'),error=document.getElementById('transfer-error'),providersList=document.getElementById('providers'),resultsTitle=document.getElementById('results-title'),resultsCopy=document.getElementById('results-copy');
+const currencyDigits=currency=>['INR','PHP'].includes(currency)?0:2;
+const amountNumber=(value,digits=2)=>new Intl.NumberFormat('en-GB',{maximumFractionDigits:digits,minimumFractionDigits:digits}).format(value);
+const currencySign=currency=>({USD:'$',GBP:'£',EUR:'€',AUD:'A$',CAD:'C$'}[currency]||currency);
+const moneyText=(value,currency,digits=currencyDigits(currency))=>currency==='AED'?`D ${amountNumber(value,digits)}`:`${currencySign(currency)} ${amountNumber(value,digits)}`;
+const moneyHtml=(value,currency,digits=currencyDigits(currency))=>currency==='AED'?`<span class="currency-value"><span class="dirham-mark" aria-label="AED"></span> ${amountNumber(value,digits)}</span>`:`<span class="currency-value">${currencySign(currency)} ${amountNumber(value,digits)}</span>`;
+const rateValue=value=>new Intl.NumberFormat('en-GB',{maximumFractionDigits:6}).format(value);
+const rateHtml=(value,currency)=>currency==='AED'?`<span class="currency-value"><span class="dirham-mark" aria-label="AED"></span> ${rateValue(value)}</span>`:`<span class="currency-value">${currencySign(currency)} ${rateValue(value)}</span>`;
+const parseAmount=()=>Number(amount.value.replace(/,/g,''));
+function setError(visible){error.hidden=!visible;amount.toggleAttribute('aria-invalid',visible)}
+function formatAmountInput(){const raw=amount.value.replace(/,/g,'').replace(/[^0-9.]/g,'');const parts=raw.split('.');parts[0]=parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');amount.value=parts.length>1?parts[0]+'.'+parts.slice(1).join(''):parts[0]}
+function setCurrencyOption(select,value){const option=[...select.options].find(item=>item.value===value||item.text===value);if(option)select.value=option.value||option.text}
+function updateDirLabel(){directionFrom.setAttribute('aria-pressed',String(isOutbound));directionTo.setAttribute('aria-pressed',String(!isOutbound))}
+function syncRoute(){const selected=countries[country.value];if(!selected)return;toFlag.textContent=selected.flag;toName.textContent=selected.name;sendToLabel.textContent=isOutbound?'Send to':'Send from';if(isOutbound){setCurrencyOption(send,'AED');setCurrencyOption(receive,selected.currency)}else{setCurrencyOption(send,selected.currency);setCurrencyOption(receive,'AED')}calculateTransfers(false)}
+function hideResults(){rows=[];providersList.innerHTML='';results.hidden=true;results.classList.remove('visible');emptyState.hidden=false}
+function getTransferAmount(){const hasCustom=amount.value.trim()!=='';const value=parseAmount();return{value,hasCustom,isValid:hasCustom&&Number.isFinite(value)&&value>0}}
+function calculateTransfers(showError=false){const current=getTransferAmount();if(!current.hasCustom){setError(false);hideResults();return false}if(!current.isValid){hideResults();setError(showError);return false}setError(false);const rate=perAed[receive.value]/perAed[send.value];rows=providers.map(provider=>{const fee=provider.fee/perAed[send.value];const exchangeRate=rate*(1-provider.spread);return{...provider,fee,exchangeRate,receive:Math.max(0,(current.value-fee)*exchangeRate)}});const destination=isOutbound?countries[country.value].name:'the UAE';resultsTitle.textContent=`Send ${moneyText(current.value,send.value)} to ${destination}`;resultsCopy.textContent=`${moneyText(current.value,send.value)} · ${send.value} → ${receive.value} · indicative comparison`;render();emptyState.hidden=true;results.hidden=false;results.classList.add('visible');return true}
+function logoMarkup(row){return row.logo?`<img class="provider-logo" src="${row.logo}" alt="${row.name} logo" loading="lazy" onerror="this.outerHTML='<span class=&quot;provider-logo provider-logo-mark&quot;>${row.mark}</span>'">`:`<span class="provider-logo provider-logo-mark">${row.mark}</span>`}
+function render(){const ordered=[...rows].sort((a,b)=>sort.value==='fee'?a.fee-b.fee:sort.value==='speed'?a.speed-b.speed||b.receive-a.receive:b.receive-a.receive);providersList.innerHTML=ordered.map(row=>{const feeText=moneyHtml(row.fee,send.value);const rateText=`${moneyHtml(1,send.value,0)} = ${rateHtml(row.exchangeRate,receive.value)}`;return`<article class="provider"><div class="provider-brand">${logoMarkup(row)}<div><div class="provider-name">${row.name}</div><span class="status">${row.status}</span></div></div><div class="metric primary"><span>Recipient gets</span><strong>${moneyHtml(row.receive,receive.value)}</strong></div><div class="metric"><span>Fee</span><strong>${feeText}</strong></div><div class="metric exchange-rate"><span>Exchange rate</span><strong>${rateText}</strong></div><div class="metric speed"><span>Speed</span><strong>${row.speed===1?'Today':row.speed+' days'}</strong></div></article>`}).join('')}
+function setDirection(outbound){if(isOutbound===outbound)return;isOutbound=outbound;updateDirLabel();syncRoute()}
+directionFrom.addEventListener('click',()=>setDirection(true));
+directionTo.addEventListener('click',()=>setDirection(false));
+form.addEventListener('submit',event=>{event.preventDefault();const ok=calculateTransfers(true);if(ok)results.scrollIntoView({behavior:'smooth',block:'nearest'});else amount.focus()});
+amount.addEventListener('input',()=>{formatAmountInput();calculateTransfers()});
+country.addEventListener('change',syncRoute);sort.addEventListener('change',render);send.addEventListener('change',()=>calculateTransfers(false));receive.addEventListener('change',()=>calculateTransfers(false));
+const params=new URLSearchParams(location.search);
+if(params.get('country')&&countries[params.get('country')])country.value=params.get('country');
+if(params.get('from')==='AED')isOutbound=true;else if(params.get('to')==='AED')isOutbound=false;
+updateDirLabel();
+syncRoute();
+if(params.get('from')&&perAed[params.get('from')])send.value=params.get('from');
+if(params.get('to')&&perAed[params.get('to')])receive.value=params.get('to');
+if(params.get('amount'))amount.value=params.get('amount');
+formatAmountInput();
+calculateTransfers();
+const menuButton=document.querySelector('.hamburger'),mobileNav=document.getElementById('mobile-nav');menuButton.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!open));menuButton.setAttribute('aria-label',open?'Open menu':'Close menu');mobileNav.classList.toggle('open',!open)});
+</script>
+<script src="movo-footer.js?v=1"></script>
+</body>
+</html>

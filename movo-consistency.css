@@ -1,0 +1,464 @@
+@import url("movo-design-system.css");
+
+:root {
+  --movo-action-blue: #1b56f5;
+  --movo-action-blue-hover: #1446d4;
+  --movo-action-blue-soft: #eef2ff;
+  --movo-action-white: #ffffff;
+  --movo-heading: #151515;
+  --movo-button-height: 52px;
+  --movo-button-radius: 14px;
+}
+
+/* Shared site navigation */
+.movo-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 72px;
+  border-bottom: 1px solid var(--movo-line-200);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 8px rgba(21, 21, 21, 0.04);
+}
+
+.movo-site-header__inner {
+  position: relative;
+  width: min(100%, 1440px);
+  min-height: 72px;
+  margin: 0 auto;
+  padding: 0 var(--movo-page-gutter);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+.movo-site-header--direct {
+  position: relative;
+  width: 100%;
+  min-height: 72px;
+  padding: 0 var(--movo-page-gutter) !important;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+.movo-site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+  color: var(--movo-ink-900);
+  text-decoration: none;
+}
+
+.movo-site-brand img {
+  width: 44px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.movo-site-brand__name {
+  font-family: var(--movo-font-display);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: lowercase;
+}
+
+.movo-site-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.movo-site-nav a,
+.movo-site-mobile-nav a {
+  color: var(--movo-ink-600);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.movo-site-nav a {
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.movo-site-nav a:hover,
+.movo-site-nav a[aria-current="page"] {
+  background: var(--movo-blue-050);
+  color: var(--movo-blue-600);
+}
+
+.movo-site-menu-toggle {
+  display: none;
+  margin-left: auto;
+  width: 44px;
+  height: 44px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+}
+
+.movo-site-menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 0;
+  border-radius: 99px;
+  background: var(--movo-ink-900);
+  transition: transform var(--movo-standard), opacity var(--movo-standard);
+}
+
+.movo-site-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.movo-site-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.movo-site-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.movo-site-mobile-nav {
+  display: none;
+}
+
+/* Product typography */
+h1,
+.hero-title,
+.hero-name {
+  max-width: 100%;
+  margin: 0;
+  color: var(--movo-heading);
+  font-family: "Montserrat Alternates", sans-serif !important;
+  font-size: clamp(48px, 5.3vw, 72px) !important;
+  font-weight: 900 !important;
+  line-height: 1.04 !important;
+  letter-spacing: -0.045em !important;
+  overflow-wrap: anywhere;
+}
+
+h2,
+.section-title,
+.sh,
+.reviews-num,
+.results-title {
+  margin: 0;
+  color: var(--movo-heading);
+  font-family: "Montserrat Alternates", sans-serif !important;
+  font-size: clamp(28px, 3vw, 36px) !important;
+  font-weight: 700 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.025em !important;
+}
+
+.section-title::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Primary actions */
+:is(
+  .transfer-submit,
+  .savings-submit,
+  .submit,
+  .calculate-btn,
+  .view,
+  .rate-btn,
+  .btn-primary,
+  .btn-black,
+  .btn-white,
+  .btn-solid,
+  .subscribe-btn,
+  .movo-modal-submit
+) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-height: var(--movo-button-height) !important;
+  padding: 0 22px !important;
+  border: 1.5px solid var(--movo-action-blue) !important;
+  border-radius: var(--movo-button-radius) !important;
+  background: var(--movo-action-blue) !important;
+  color: #fff !important;
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  text-align: center;
+  box-shadow: none !important;
+}
+
+:is(
+  .transfer-submit,
+  .savings-submit,
+  .submit,
+  .calculate-btn,
+  .view,
+  .rate-btn,
+  .btn-primary,
+  .btn-black,
+  .btn-white,
+  .btn-solid,
+  .subscribe-btn,
+  .movo-modal-submit
+):hover {
+  border-color: var(--movo-action-blue-hover) !important;
+  background: var(--movo-action-blue-hover) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px rgba(27, 86, 245, 0.22) !important;
+}
+
+/* Secondary actions */
+:is(
+  .nav-cta,
+  .btn-outline,
+  .btn-ghost,
+  .offer,
+  .provider-action,
+  .reset-btn
+) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-height: var(--movo-button-height) !important;
+  padding: 0 22px !important;
+  border: 1.5px solid var(--movo-action-blue) !important;
+  border-radius: var(--movo-button-radius) !important;
+  background: var(--movo-action-white) !important;
+  color: var(--movo-action-blue) !important;
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  text-align: center;
+  box-shadow: none !important;
+}
+
+:is(
+  .nav-cta,
+  .btn-outline,
+  .btn-ghost,
+  .offer,
+  .provider-action,
+  .reset-btn
+):hover {
+  border-color: var(--movo-action-blue-hover) !important;
+  background: var(--movo-action-blue-soft) !important;
+  color: var(--movo-action-blue-hover) !important;
+  box-shadow: none !important;
+}
+
+/* Tabs, filters, and selected controls use the same blue language. */
+:is(.chip, .sort, .ftab, .widget-tab) {
+  border-color: rgba(27, 86, 245, 0.36) !important;
+  background: #fff !important;
+  color: var(--movo-action-blue) !important;
+}
+
+.widget-tab {
+  min-height: var(--movo-button-height) !important;
+  padding: 0 22px !important;
+  border-width: 1.5px !important;
+  border-radius: var(--movo-button-radius) !important;
+  font-family: Inter, Arial, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+:is(.chip.active, .chip-active, .sort.active, .ftab.on, .widget-tab.active) {
+  border-color: var(--movo-action-blue) !important;
+  background: var(--movo-action-blue) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+:is(.chip.active, .chip-active, .sort.active, .ftab.on, .widget-tab.active):hover {
+  border-color: var(--movo-action-blue-hover) !important;
+  background: var(--movo-action-blue-hover) !important;
+  color: #fff !important;
+}
+
+.widget-tab:not(.active):hover,
+.chip:not(.active):hover,
+.chip-default:hover,
+.sort:not(.active):hover,
+.ftab.off:hover {
+  border-color: var(--movo-action-blue) !important;
+  background: var(--movo-action-blue-soft) !important;
+  color: var(--movo-action-blue-hover) !important;
+}
+
+/* Links that visually behave like buttons. */
+.section-view-all,
+.widget-route-link,
+.similar-link,
+.see-all,
+.library-read {
+  color: var(--movo-action-blue) !important;
+}
+
+.site-header .nav a.active {
+  background: var(--movo-action-blue-soft) !important;
+  color: var(--movo-action-blue) !important;
+}
+
+.movo-modal-close {
+  border-color: var(--movo-action-blue) !important;
+  background: #fff !important;
+  color: var(--movo-action-blue) !important;
+}
+
+.movo-modal-close:hover {
+  background: var(--movo-action-blue-soft) !important;
+  color: var(--movo-action-blue-hover) !important;
+}
+
+/* Icon strokes inherit the button color. */
+:is(
+  .transfer-submit,
+  .savings-submit,
+  .submit,
+  .calculate-btn,
+  .view,
+  .rate-btn,
+  .btn-primary,
+  .btn-black,
+  .btn-white,
+  .btn-solid,
+  .nav-cta,
+  .btn-outline,
+  .btn-ghost,
+  .offer,
+  .provider-action
+) svg {
+  stroke: currentColor !important;
+}
+
+@media (max-width: 767px) {
+  .movo-site-header,
+  .movo-site-header__inner {
+    min-height: 60px;
+  }
+
+  .movo-site-brand img {
+    width: 32px;
+    height: 24px;
+  }
+
+  .movo-site-brand__name {
+    font-size: 20px;
+  }
+
+  .movo-site-nav,
+  .movo-site-header .nav-cta {
+    display: none !important;
+  }
+
+  .movo-site-menu-toggle {
+    display: flex;
+  }
+
+  .movo-site-mobile-nav {
+    position: fixed;
+    inset: 60px 0 auto;
+    z-index: 99;
+    padding: 12px 20px 20px;
+    border-bottom: 1px solid var(--movo-line-200);
+    background: var(--movo-white);
+    box-shadow: 0 12px 28px rgba(21, 21, 21, 0.08);
+  }
+
+  .movo-site-mobile-nav.open {
+    display: grid;
+  }
+
+  .movo-site-mobile-nav a {
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--movo-line-200);
+    font-weight: 650;
+  }
+
+  .movo-site-mobile-nav a:last-child {
+    border-bottom: 0;
+  }
+
+  body.menu-open .movo-site-header .movo-site-nav {
+    position: fixed;
+    inset: 60px 0 auto;
+    transform: none;
+    z-index: 120;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 18px 20px 24px;
+    border-bottom: 1px solid var(--movo-line-200);
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 18px 40px rgba(21, 21, 21, 0.1);
+    backdrop-filter: blur(18px);
+  }
+
+  body.menu-open .movo-site-header .movo-site-nav a {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 12px;
+    color: var(--movo-ink-900);
+    font-size: 16px;
+    font-weight: 650;
+  }
+
+  h1,
+  .hero-title,
+  .hero-name {
+    font-size: 40px !important;
+    line-height: 1.06 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  h2,
+  .section-title,
+  .sh,
+  .reviews-num,
+  .results-title {
+    font-size: 28px !important;
+    line-height: 1.15 !important;
+  }
+
+  :is(
+    .transfer-submit,
+    .savings-submit,
+    .submit,
+    .calculate-btn,
+    .view,
+    .rate-btn,
+    .btn-primary,
+    .btn-black,
+    .btn-white,
+    .btn-solid,
+    .subscribe-btn,
+    .movo-modal-submit,
+    .btn-outline,
+    .btn-ghost,
+    .offer,
+    .provider-action
+  ) {
+    min-height: 52px !important;
+  }
+}
