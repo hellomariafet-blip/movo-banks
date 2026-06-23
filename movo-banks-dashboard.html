@@ -1232,6 +1232,84 @@ input:focus-visible {
 /* Ranked bank rows are shared with bank-ratings.html via bank-ranking-shared.css. */
 
 /* ═══════════════════════════════════════════
+   POPULAR GUIDES
+═══════════════════════════════════════════ */
+.popular-guides {
+  padding: 74px var(--page-px) 80px;
+  background: #fff;
+  border-top: 1px solid var(--border-sub);
+}
+.popular-guides-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+.popular-guides-kicker {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.popular-guides h2 {
+  max-width: 760px;
+  margin-top: 14px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -1.2px;
+}
+.popular-guides-copy {
+  max-width: 680px;
+  margin-top: 18px;
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.6;
+}
+.popular-guides-grid {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.popular-guide-card {
+  min-height: 210px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--border-sub);
+  border-radius: 18px;
+  background: var(--bg-soft);
+  transition: transform var(--t-fast), box-shadow var(--t-fast), border-color var(--t-fast);
+}
+.popular-guide-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border);
+  box-shadow: 0 14px 34px rgba(21,21,21,.08);
+}
+.popular-guide-card span {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.popular-guide-card strong {
+  margin-top: 16px;
+  display: block;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: -.2px;
+}
+.popular-guide-card small {
+  margin-top: 18px;
+  color: var(--text-tertiary);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* ═══════════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════════ */
 .footer {
@@ -1292,6 +1370,7 @@ input:focus-visible {
   .savings-widgets { padding-left: var(--page-px); padding-right: var(--page-px); }
   .filter-bar { padding-left: var(--page-px); padding-right: var(--page-px); }
   .bank-list { padding-left: var(--page-px); padding-right: var(--page-px); }
+  .popular-guides-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer { padding-left: var(--page-px); padding-right: var(--page-px); }
 }
 
@@ -1428,6 +1507,9 @@ input:focus-visible {
   .sort-btn { display: none; }
 
   /* Footer */
+  .popular-guides { padding: 54px var(--page-px) 62px; }
+  .popular-guides-grid { grid-template-columns: 1fr; }
+  .popular-guide-card { min-height: 178px; }
   .footer { padding: 36px var(--page-px); }
   .footer-top { flex-direction: column; gap: 20px; }
   .footer-links { gap: 20px; flex-wrap: wrap; }
@@ -2208,6 +2290,20 @@ input:focus-visible {
     </div>
   </div>
 </div>
+
+<section class="popular-guides" aria-labelledby="popular-guides-title">
+  <div class="popular-guides-inner">
+    <p class="popular-guides-kicker">Popular UAE banking guides</p>
+    <h2 id="popular-guides-title">Search-friendly guides for real banking decisions</h2>
+    <p class="popular-guides-copy">Use these guides to compare UAE banks, salary accounts and transfer options around the way you actually manage money.</p>
+    <div class="popular-guides-grid">
+      <a class="popular-guide-card" href="guide-best-bank-uae.html"><span>Bank comparison</span><strong>Best bank in UAE: how to choose without guessing</strong><small>Compare banks around salary, savings, transfers and fees.</small></a>
+      <a class="popular-guide-card" href="guide-bank-account-for-expats-uae.html"><span>Expats</span><strong>UAE bank account for expats: what to compare first</strong><small>Documents, salary rules, transfers and setup checks.</small></a>
+      <a class="popular-guide-card" href="guide-salary-account-uae.html"><span>Salary</span><strong>Best salary account in UAE: how to compare the real fit</strong><small>Look past welcome offers and compare monthly costs.</small></a>
+      <a class="popular-guide-card" href="guide-money-transfer-uae.html"><span>Transfers</span><strong>Best money transfer from UAE: compare the total cost</strong><small>Fee, exchange rate, speed and recipient amount.</small></a>
+    </div>
+  </div>
+</section>
 
 <!-- ══ FOOTER ══ -->
 <footer class="footer">
