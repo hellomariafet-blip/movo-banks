@@ -101,6 +101,8 @@ img{display:block;max-width:100%}
 .hero-stats{display:flex;gap:72px;margin-top:40px;align-items:flex-start}
 .hero-stat{display:flex;flex-direction:column;gap:8px}
 .hs-val{font-family:'Montserrat Alternates',sans-serif;font-weight:900;font-size:44px;line-height:50px;color:var(--black);letter-spacing:-1px;white-space:nowrap}
+.hs-val-score{display:inline-flex;align-items:center;gap:10px}
+.hs-star{color:var(--blue);font-family:Arial,sans-serif;font-size:.82em;line-height:1;letter-spacing:0}
 .hs-label{font-weight:500;font-size:13px;line-height:20px;color:var(--text-2)}
 
 /* Buttons */
@@ -355,7 +357,7 @@ img{display:block;max-width:100%}
   <!-- Stats strip -->
   <div class="hero-stats">
     <div class="hero-stat"><div class="hs-val">#8</div><div class="hs-label">Movo Rating in UAE</div></div>
-    <div class="hero-stat"><div class="hs-val">3.3</div><div class="hs-label">Customer Score</div></div>
+    <div class="hero-stat"><div class="hs-val hs-val-score">3.3 <span class="hs-star" aria-hidden="true">★</span></div><div class="hs-label">Customer Score</div></div>
     <div class="hero-stat"><div class="hs-val">59</div><div class="hs-label">Branches</div></div>
     <div class="hero-stat"><div class="hs-val">2017</div><div class="hs-label">Founded</div></div>
   </div>
